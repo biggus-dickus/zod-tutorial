@@ -4,7 +4,9 @@ import { it } from "vitest";
 import { z } from "zod";
 import { Equal, Expect } from "./helpers/type-utils";
 
-const genericFetch = (url: string, schema: z.ZodSchema) => {
+type ResponseType = { name: string }
+
+const genericFetch = <T extends z.ZodType<ResponseType>>(url: string, schema: T) => {
   //                 ^ 🕵️‍♂️
   return fetch(url)
     .then((res) => res.json())

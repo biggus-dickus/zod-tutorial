@@ -2,9 +2,11 @@
 
 import { expect, it } from "vitest";
 import { z } from "zod";
-//       ^ 🕵️‍♂️
+
+const numSchema = z.number()
 
 export const toString = (num: unknown) => {
+  numSchema.parse(num);
   return String(num);
 };
 
